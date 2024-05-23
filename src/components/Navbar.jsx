@@ -65,14 +65,10 @@ list-style:none;
 }
 
 `;
-const NavLi = styled.a`
+const NavLi = styled.div`
 color:white;
 text-decoration:none;
 cursor:pointer;
-transition:all 0.2s ease-in-out;
-&:hover: {
-  color:red;
-}
 
 
 `;
