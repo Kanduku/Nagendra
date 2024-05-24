@@ -150,7 +150,7 @@ z-index: 1;
 `;
 const Img =styled.img`
 border-radius:48%;
-margin:-30px 0 0 150px;
+
 width:90%;
 height:90%;
 max-width:400px;
@@ -159,7 +159,11 @@ border: 3px solid pink;
 @media (max-width:640px){
     max-width:300px;
     max-height:300px;
+
     margin: 0;
+} 
+@media (min-width:1140px){
+    margin:0 0 0 150px;
 } 
 `;
 

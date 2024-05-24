@@ -1,27 +1,32 @@
-import { OrbitControls } from '@react-three/drei';
-import { Canvas } from '@react-three/fiber';
-import Bird from "./Bird";
+import React, { useEffect, useRef } from 'react';
+
+import { OrbitControls, useAnimations, useGLTF, useTexture } from '@react-three/drei';
 import { Environment } from '@react-three/drei';
-import React from 'react'
+import { Canvas, useThree } from '@react-three/fiber';
+import Dragon from "./Drago";
+
+
 
 const AvatarCanvas = () => {
-
-  
-  return (<Canvas>
- 
-  
+  return (
+    <Canvas>
+      
     <ambientLight intensity={0.5}/>
     <pointLight position={[2,1,1]} />
-    <OrbitControls enableZoom={false} enablePan={false} enableRotate={false} />
+    <OrbitControls
+    enableZoom={false}
+    enablePan={false}
+    enableRotate={true}
+  />
 
   
-   <Bird position={[1,0,0]}  scale={0.004}  />
+   <Dragon position={[0,0,0]}   />
    
    <Environment preset='sunset' />
+     
+    </Canvas>
+  );
+};
 
-  </Canvas>
-   
-  )
-}
 
-export default AvatarCanvas
+export default AvatarCanvas;
