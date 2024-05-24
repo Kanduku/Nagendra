@@ -9,8 +9,8 @@ const Drago = () => {
     const { camera } = useThree();
     camera.position.set(-2, 0.6, 3);
     const modelRef = useRef();
-    const avatar = useGLTF("./red_dragon.glb");
-    const texture = useTexture("./helo.jpg"); // Load texture image
+    const avatar = useGLTF("./red_dragonn.glb");
+    const texture = useTexture("./heloa.jpg"); // Load texture image
     const { actions } = useAnimations(avatar.animations, modelRef);
   
     useEffect(() => {
