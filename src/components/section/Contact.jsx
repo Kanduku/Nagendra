@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import emailjs from "@emailjs/browser";
-
+import AvatarCanvas from "./AvatarCanvas";
 
 const Container = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   align-items: center;
-  padding: 70px 0;
+  padding: 7px 0 70px 0;
 `;
 
 const Wrapper = styled.div`
@@ -129,7 +129,85 @@ const Contact = () => {
         }
       );
   };
-  return (
+
+  
+const HeroInnerContainer =styled.div`
+display:flex;
+justify-content:space-between;
+align-items:center;
+position:relative;
+width:100%;
+max-width:1100px;
+@media (max-width:960px){
+    flex-direction:column;
+}
+`;
+
+const HeroLeftContainer =styled.div`
+width:100%;
+order:1;
+gap:6px;
+justify-content:start;
+
+@media (max-width:960px){
+    order:2;
+    margin-bottom:80px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    
+    
+}
+
+`;
+
+const HeroRightContainer =styled.div`
+width:100%;
+order:2;
+
+align-items:end;
+@media (max-width:960px){
+    flex-direction:column;
+    order:1;
+  
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-bottom:30px;
+}
+@media (max-width:640px){
+    margin-bottom:30px;
+}
+`;
+const HeroContainer =styled.div`
+display:flex;
+justify-content:center;
+
+position:relative;
+padding:80px 30px ;
+z-index:1;
+@media (max-width:960px){
+    padding:66px 16px;
+}
+@media (max-width:640px){
+    padding:32px 16px;
+}
+clip-path:polygon(0 0,100% 0, 100% 100%, 70% 95%, 0 100%, 0 0);
+`;
+  return ( <HeroContainer>
+    <HeroInnerContainer>
+            <HeroLeftContainer>
+              <div>
+                <AvatarCanvas />
+             
+                </div> 
+                <div>
+                <AvatarCanvas />
+             
+                </div> 
+            </HeroLeftContainer>
+            <HeroRightContainer>
     <Container >
       <Wrapper>
         <Title>Contact</Title>
@@ -150,7 +228,9 @@ const Contact = () => {
         </ContactForm>
       </Wrapper>
     </Container>
-    
+    </HeroRightContainer>
+    </HeroInnerContainer>
+    </HeroContainer>
   );
 };
 

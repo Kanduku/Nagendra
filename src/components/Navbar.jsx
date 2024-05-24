@@ -22,7 +22,7 @@ const NavLogo = styled(Link)`
  font-size:18px;
   width:80%; 
   color:white;
- 
+ text-decotation:none;
 `;
 
 const Nav = styled.div`
@@ -65,10 +65,11 @@ list-style:none;
 }
 
 `;
-const NavLi = styled.div`
+const NavLi = styled(Link)`
 color:white;
 text-decoration:none;
 cursor:pointer;
+
 
 
 `;
@@ -95,6 +96,7 @@ display:none;
 `;
 
 const GithubButton = styled.a`
+text-decotation:none;
   border: 1px solid white;
   color:white;
   justify-content: center;
@@ -113,7 +115,9 @@ const GithubButton = styled.a`
 
   }
 `;
+
 const MObileMenu = styled.ul`
+text-decotation:none;
 width:100%;
 align-items:start;
 justify-content:center;
@@ -149,23 +153,23 @@ const Navbar = () => {
 </MobileIcon>
 
         <NavItems>
-        <Link to="/"><NavLi  >Home</NavLi></Link>
-        <Link to="/Skills"><NavLi  >Skills</NavLi></Link>
+        <NavLi to="/"  >Home</NavLi>
+        <NavLi to="/Skills" >Skills</NavLi>
    
    
-        <Link to="/Projects"><NavLi >Projects</NavLi></Link>
-        <Link to="/Education"><NavLi >About me</NavLi></Link>
-        <Link to="/Contact"><NavLi >Contact</NavLi></Link>
+        <NavLi to="/Projects">Projects</NavLi>
+        <NavLi to="/Education">About me</NavLi>
+        <NavLi to="/Contact">Contact</NavLi>
         </NavItems>
         {isOpen && (
         <MObileMenu isOpen={isOpen} >
-          <Link to="/"><NavLi onClick={() => setIsOpen(!isOpen)}  >Home</NavLi></Link>
-          <Link to="/Skills"><NavLi onClick={() => setIsOpen(!isOpen)}  >Skills</NavLi></Link>
+          <NavLi   to="/" onClick={() => setIsOpen(!isOpen)}  >Home</NavLi>
+          <NavLi to="/Skills" onClick={() => setIsOpen(!isOpen)}  >Skills</NavLi>
 
           
-          <Link to="/Projects"><NavLi onClick={() => setIsOpen(!isOpen)} >Projects</NavLi></Link>
-          <Link to="/Education"><NavLi onClick={() => setIsOpen(!isOpen)} >About me</NavLi></Link>
-          <Link to="/Contact"><NavLi onClick={() => setIsOpen(!isOpen)} >Contact</NavLi></Link>
+          <NavLi to="/Projects" onClick={() => setIsOpen(!isOpen)} >Projects</NavLi>
+          <NavLi  to="/Education" onClick={() => setIsOpen(!isOpen)} >About me</NavLi>
+          <NavLi to="/Contact" onClick={() => setIsOpen(!isOpen)} >Contact</NavLi>
         <GithubButton
               href={Bio.github}
               target="_Blank"
