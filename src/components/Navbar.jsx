@@ -72,6 +72,29 @@ cursor:pointer;
 
 
 
+
+&:focus {
+  border: 1px solid pink;
+  color:black;
+  background:white;
+  border-radius:30px;
+  padding:9px 10px;
+
+   align-items:center:
+   justify-content:center;
+}
+
+@media screen and (max-width:760px) {
+  &:focus {
+  border: 1px solid pink;
+  color:black;
+  background:white;
+  padding:5px 250px;
+  
+}
+}
+
+
 `;
 const ButtonContainer =styled.div`
 width:100%%;
@@ -110,16 +133,19 @@ text-decotation:none;
   font-weight: 500;
   transition: all 0.6s ease-in-out;
   text-decoration: none;
-  &:hover {
-    background: black;
 
+  &:hover {
+    cursor: pointer;
+    border: 1px solid pink;
+    color:black;
+    background:white;
   }
 `;
 
 const MObileMenu = styled.ul`
-text-decotation:none;
+
 width:100%;
-align-items:start;
+align-items:center;
 justify-content:center;
 gap:16px;
 display:flex;
@@ -137,6 +163,7 @@ background:grey;
   transform: ${({ isOpen }) => isOpen ? "translateY(0)" : "translateY(-100)"};
   opacity: ${({ isOpen }) => isOpen ? "100%" : "0"};
   z-index: ${({ isOpen }) => isOpen ? "1000" : "100"};
+
 
 `;
 
@@ -158,7 +185,7 @@ const Navbar = () => {
    
    
         <NavLi to="/Projects">Projects</NavLi>
-        <NavLi to="/Education">About me</NavLi>
+        <NavLi to="/Education">About</NavLi>
         <NavLi to="/Contact">Contact</NavLi>
         </NavItems>
         {isOpen && (
@@ -168,7 +195,7 @@ const Navbar = () => {
 
           
           <NavLi to="/Projects" onClick={() => setIsOpen(!isOpen)} >Projects</NavLi>
-          <NavLi  to="/Education" onClick={() => setIsOpen(!isOpen)} >About me</NavLi>
+          <NavLi  to="/Education" onClick={() => setIsOpen(!isOpen)} >About</NavLi>
           <NavLi to="/Contact" onClick={() => setIsOpen(!isOpen)} >Contact</NavLi>
         <GithubButton
               href={Bio.github}

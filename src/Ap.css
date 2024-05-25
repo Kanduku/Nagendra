@@ -17,10 +17,11 @@ body, html {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 24px;
+   
   }
   
   .box1 {
+    padding-top: 90px;
     background-color: black;
     flex: 0 0 30%;
   }
@@ -42,9 +43,11 @@ body, html {
       height: 100%;
     }
     .box1 {
-  
-      height: 40%;
-    
+      padding-top: 40px;
+      height: 70%;
+      padding-bottom: 0px;
+      margin-bottom: -140px;
+      margin-top: -80px;
     }
   }
   
