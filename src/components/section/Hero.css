@@ -1,0 +1,247 @@
+.hero-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 0 90px 0 140px;
+  z-index: 1;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0 100%, 0 0);
+}
+
+@media (max-width: 960px) {
+  .hero-container {
+    padding: 66px 16px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-container {
+    padding: 32px 16px;
+  }
+}
+
+.hero-inner-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+}
+
+@media (max-width: 960px) {
+  .hero-inner-container {
+    flex-direction: column;
+  }
+}
+
+.hero-left-container {
+  width: 100%;
+  order: 1;
+  gap: 6px;
+  justify-content: start;
+}
+
+@media (max-width: 960px) {
+  .hero-left-container {
+    order: 2;
+    margin-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.hero-right-container {
+  width: 100%;
+  order: 2;
+  display: flex;
+  align-items: end;
+}
+
+@media (max-width: 960px) {
+  .hero-right-container {
+    flex-direction: column;
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-right-container {
+    margin-bottom: 30px;
+  }
+}
+
+.title {
+  font-weight: 700;
+  font-size: 50px;
+  margin-bottom: 18px;
+  color: var(--text-primary);
+  line-height: 68px;
+}
+
+@media (max-width: 960px) {
+  .title {
+    text-align: center;
+    font-size: 30px;
+    line-height: 38px;
+    font-weight: 500;
+  }
+}
+
+.text-loop {
+  font-weight: 600;
+  font-size: 30px;
+  gap: 12px;
+  color: var(--text-primary);
+  line-height: 48px;
+  display: flex;
+}
+
+@media (max-width: 960px) {
+  .text-loop {
+    align-self: start;
+    padding: 0;
+    text-align: center;
+    align-items: center;
+    justify-content: start;
+    font-size: 22px;
+    line-height: 38px;
+    margin-bottom: 16px;
+  }
+}
+
+.span {
+  cursor: pointer;
+  color: #ff00ff;
+}
+
+.sub-title {
+  font-weight: 400;
+  font-size: 20px;
+  color: gray;
+  line-height: 32px;
+  margin-bottom: 42px;
+}
+
+@media (max-width: 960px) {
+  .sub-title {
+    font-size: 16px;
+    line-height: 32px;
+    text-align: center;
+  }
+}
+
+.resume-button {
+  background-color: red;
+  -webkit-appearance: button;
+  -moz-appearance: button;
+  appearance: button;
+  text-decoration: none;
+  width: 95%;
+  max-width: 200px;
+  align-items: center;
+  text-align: center;
+  padding: 16px 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+  background-size: 400%;
+  border-radius: 30px;
+  z-index: 1;
+}
+
+.man-container {
+  height: 100vh;
+  position: relative;
+}
+
+
+
+
+
+
+/* Reset and global styles */
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  background-color: black;
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column; /* Default to column for mobile view */
+  height: 100vh;
+  width: 100%;
+ 
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+.box1 {
+  
+  flex: 0 0 35%; /* Initial size for mobile */
+  height: 100%; 
+  /* Full height for mobile */
+}
+
+.box2 {
+  
+  flex: 0 0 65%; /* Initial size for mobile */
+}
+
+/* Mobile view (default) */
+@media (max-width: 767px) {
+  .container {
+    padding: 100px 0 0 0;
+    flex-direction: column;
+  }
+
+  .box1 { 
+    order: 0; /* Ensure box1 is at the top */
+    width: 100%; /* Full width for mobile */
+    height: 50%; 
+    padding-top:60px;/* Adjust height if needed */
+  }
+
+  .box2 {
+   padding-top: 250px;
+    order: 1; /* Ensure box2 is below box1 */
+    width: 100%; /* Full width for mobile */
+    height: 50%; /* Adjust height if needed */
+  }
+}
+
+/* Desktop view */
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row; /* Change direction to row */
+  }
+
+  .box1 {
+    order: 1; /* Ensure box1 is at the bottom */
+    flex: 0 0 35%; /* Keep the same proportion */
+    height: 100%;
+    padding-right: 190px;
+   /* Full height */
+  }
+
+  .box2 {
+    order: 0; /* Ensure box2 is above box1 */
+    flex: 0 0 65%; /* Keep the same proportion */
+    height: 100%; 
+    /* Full height */
+  }
+}

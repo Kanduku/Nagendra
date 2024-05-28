@@ -1,12 +1,16 @@
 import React from 'react'
-
+import "./Ap.css";
+import Boy from '../canvas/Boy';
 const Education = () => {
   return (
-    <div>
-        <h1>this page is under development</h1>
-      
-    </div>
+  
+        <div class="zontainer">
+   
+    <div class="zox zox1"><Boy /></div>
+    <div class="zox zox2">this is about Page</div>
+  </div>
+  
   )
 }
 
-export default Education
+export default Education;

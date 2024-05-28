@@ -1,15 +1,14 @@
 import React from 'react';
 import Tars from '../canvas/Tars';
-import AvatarCanvas from "./AvatarCanvas";
-import "./../../Ap.css"
+import "./Ap.css"
 import Email from './Email';
-
+import Gmail from '../canvas/Gmail';
 const Contact = () => {
   return (
-   <div class="container">
+   <div class="zontainer">
       <Tars />
-    <div class="box box1"><AvatarCanvas /></div>
-    <div class="box box2"><Email /></div>
+    <div class="zox zox1"><Gmail /></div>
+    <div class="zox zox2"><Email /></div>
   </div>
   )
 }

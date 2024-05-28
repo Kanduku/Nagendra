@@ -1,0 +1,76 @@
+/* Reset and global styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    height: 100%;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column; /* Default to column for mobile view */
+    height: 100vh;
+    width: 100%;
+  }
+  
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+  }
+  
+  .box1 {
+    background-color: black;
+    flex: 0 0 35%; /* Initial size for mobile */
+    height: 100%; /* Full height for mobile */
+  }
+  
+  .box2 {
+    background-color: red;
+    flex: 0 0 65%; /* Initial size for mobile */
+  }
+  
+  /* Mobile view (default) */
+  @media (max-width: 767px) {
+    .container {
+      padding: 100px 0 0 0;
+      flex-direction: column;
+    }
+  
+    .box1 { padding:  0 0 100px 0;
+      order: 0; /* Ensure box1 is at the top */
+      width: 100%; /* Full width for mobile */
+      height: 50%; /* Adjust height if needed */
+    }
+  
+    .box2 {
+     
+      order: 1; /* Ensure box2 is below box1 */
+      width: 100%; /* Full width for mobile */
+      height: 50%; /* Adjust height if needed */
+    }
+  }
+  
+  /* Desktop view */
+  @media (min-width: 768px) {
+    .container {
+      flex-direction: row; /* Change direction to row */
+    }
+  
+    .box1 {
+      order: 1; /* Ensure box1 is at the bottom */
+      flex: 0 0 35%; /* Keep the same proportion */
+      height: 100%; /* Full height */
+    }
+  
+    .box2 {
+      order: 0; /* Ensure box2 is above box1 */
+      flex: 0 0 65%; /* Keep the same proportion */
+      height: 100%; /* Full height */
+    }
+  }
+  
