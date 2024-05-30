@@ -7,8 +7,9 @@ const Projects = () => {
   return (
    <div class="zontainer">
       <Tars />
-    <div class="zox zox1"><AvatarCanvas /></div>
-    <div class="zox zox2">projects are loading</div>
+    <div class="zox zox1  "><AvatarCanvas /></div>
+
+    <div class=" zox zox2" >projects are loading</div>
   </div>
   )
 }

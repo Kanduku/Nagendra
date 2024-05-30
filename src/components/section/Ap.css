@@ -19,14 +19,18 @@
   }
   
   .zox1 {
-    padding-top: 90px;
-    background-color: black;
+
+  
     flex: 0 0 30%;
+    overflow: hidden;
+
+  
   }
   
   .zox2 {
-    background-color: black;
+   
     flex: 0 0 70%;
+ 
   
   }
   
@@ -38,18 +42,30 @@
     .zox1, .zox2 {
       flex: 0 0 auto;
       width: 100%;
-      height: 100%;
+     
     }
     .zox1 {
       padding-top: 40px;
       height: 70%;
-      padding-bottom: 0px;
-      margin-bottom: -140px;
+     
+     
       margin-top: -80px;
+      overflow: hidden;
+      height: '90vh';
     }
     .zox2 {
      padding: 0 30px;
+     height:100%;
     
     }
+    .side{
+      padding:10px 100px;
+    }
   }
-  
+  .line{
+    background-color: white;
+    width:1px;
+  padding-top: 150px;
+    height: 99vh;
+   
+  }

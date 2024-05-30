@@ -55,7 +55,7 @@ const Lhio = () => {
             <motion.div {...headContentAnimation}>
               <div className="sub-title">{Bio.description}</div>
             </motion.div>
-            <div className="resume-button">Check Resume</div>
+           
           </div>
         </div>
       </motion.div>

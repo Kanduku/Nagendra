@@ -6,8 +6,10 @@ const Education = () => {
   
         <div class="zontainer">
    
+ 
+    <div class="zox zox2"> this is about section</div>
+    <div className="line">.</div>
     <div class="zox zox1"><Boy /></div>
-    <div class="zox zox2">this is about Page</div>
   </div>
   
   )
