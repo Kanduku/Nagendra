@@ -13,7 +13,7 @@ const Container = styled.div`
   padding:  0;
   @media (max-width: 720px) {
 
-    width: 80%;
+    width: 95%;
   }
 `;
 
@@ -26,9 +26,9 @@ const Wrapper = styled.div`
   width: 100%;
   max-width: 1000px;
   gap: 12px;
-  @media (max-width: 960px) {
+  @media (max-width: 720px) {
     flex-direction: column;
-    width: 80%;
+    width: 95%;
   }
 `;
 const Title = styled.div`

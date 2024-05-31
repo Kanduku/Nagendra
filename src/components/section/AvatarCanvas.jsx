@@ -6,11 +6,16 @@ import {  useAnimations, useGLTF, useTexture } from '@react-three/drei';
 import {  useThree } from '@react-three/fiber';
 
 
-
+const StyledCanvasWrapper =styled.div`
+width:100%;
+height:auto;
+position:absolute;
+inset:0;
+`;
 
 
 const AvatarCanvas = () => {
-  return (
+  return (<StyledCanvasWrapper >
     <Canvas>
       
     <ambientLight intensity={0.5}/>
@@ -27,6 +32,7 @@ const AvatarCanvas = () => {
    <Environment preset='sunset' />
      
     </Canvas>
+    </StyledCanvasWrapper>
   );
 };
 
