@@ -10,7 +10,11 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   align-items: center;
-  padding: 7px 0 70px 0;
+  padding:  0;
+  @media (max-width: 720px) {
+
+    width: 80%;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -20,10 +24,11 @@ const Wrapper = styled.div`
   align-items: center;
   flex-direction: column;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
   gap: 12px;
   @media (max-width: 960px) {
     flex-direction: column;
+    width: 80%;
   }
 `;
 const Title = styled.div`

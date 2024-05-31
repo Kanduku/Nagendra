@@ -2,6 +2,15 @@ import React, { useRef, useState } from 'react';
 import { useGLTF, Environment } from '@react-three/drei';
 import { Canvas, useThree } from '@react-three/fiber';
 import { useFrame } from '@react-three/fiber';
+import styled from 'styled-components';
+
+const StyledCanvasWrapper =styled.div`
+width:100%;
+height:auto;
+position:absolute;
+inset:0;
+`;
+
 
 const Man = () => {
   return (
@@ -12,13 +21,14 @@ const Man = () => {
 };
 
 const Lvas = () => {
-  return (
+  return (<StyledCanvasWrapper >
     <Canvas style={{ width: '100%', height: '100%' }}>
       <ambientLight intensity={0.5} />
       <pointLight  />
       <Drag />
       <Environment preset='sunset' />
     </Canvas>
+    </StyledCanvasWrapper>
   );
 };
 

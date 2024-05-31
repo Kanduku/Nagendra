@@ -1,6 +1,14 @@
 import React, { useRef } from 'react';
 import { OrbitControls, useGLTF, Environment } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import styled from 'styled-components';
+
+const StyledCanvasWrapper =styled.div`
+width:100%;
+height:auto;
+position:absolute;
+inset:0;
+`;
 
 const Gmail = () => {
   return (
@@ -11,7 +19,7 @@ const Gmail = () => {
 };
 
 const Lvas = () => {
-  return (
+  return (<StyledCanvasWrapper>
     <Canvas style={{ width: '100%', height: '100%' }}>
       <ambientLight intensity={0.5} />
       <pointLight  />
@@ -23,6 +31,7 @@ const Lvas = () => {
       <Drag />
       <Environment preset='sunset' />
     </Canvas>
+    </StyledCanvasWrapper>
   );
 };
 

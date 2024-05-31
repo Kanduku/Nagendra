@@ -58,13 +58,11 @@
      height:100%;
     
     }
-    .side{
-      padding:10px 100px;
-    }
+ 
   }
   .line{
     background-color: white;
-    width:1px;
+    width:0.1px;
   padding-top: 150px;
     height: 99vh;
    
