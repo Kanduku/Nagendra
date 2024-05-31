@@ -4,7 +4,7 @@ import { Canvas } from '@react-three/fiber';
 import React, { useEffect, useRef } from 'react';
 import {  useAnimations, useGLTF, useTexture } from '@react-three/drei';
 import {  useThree } from '@react-three/fiber';
-
+import styled from 'styled-components';
 
 const StyledCanvasWrapper =styled.div`
 width:100%;
