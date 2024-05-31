@@ -7,7 +7,7 @@ import {  useThree } from '@react-three/fiber';
 import styled from 'styled-components';
 
 const StyledCanvasWrapper =styled.div`
-width:100%;
+
 height:auto;
 position:absolute;
 inset:0;
