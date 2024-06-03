@@ -4,18 +4,11 @@ import { Canvas } from '@react-three/fiber';
 import React, { useEffect, useRef } from 'react';
 import {  useAnimations, useGLTF, useTexture } from '@react-three/drei';
 import {  useThree } from '@react-three/fiber';
-import styled from 'styled-components';
 
-const StyledCanvasWrapper =styled.div`
-
-height:auto;
-position:absolute;
-inset:0;
-`;
 
 
 const AvatarCanvas = () => {
-  return (<StyledCanvasWrapper >
+  return (
     <Canvas>
       
     <ambientLight intensity={0.5}/>
@@ -32,7 +25,7 @@ const AvatarCanvas = () => {
    <Environment preset='sunset' />
      
     </Canvas>
-    </StyledCanvasWrapper>
+   
   );
 };
 
