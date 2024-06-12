@@ -1,8 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef} from 'react';
 import { useGLTF, Environment } from '@react-three/drei';
-import { Canvas, useThree } from '@react-three/fiber';
-import { useFrame } from '@react-three/fiber';
+import { Canvas } from '@react-three/fiber';
+
 import styled from 'styled-components';
+import { useEffect } from 'react';
+import { useAnimations } from '@react-three/drei';
 
 const StyledCanvasWrapper =styled.div`
 width:100%;
@@ -34,34 +36,17 @@ const Lvas = () => {
 
 const Drag = () => {
   const modelRef = useRef();
-  const avatar = useGLTF("./Lwe.glb");
-  const [rotation, setRotation] = useState(0);
-  const { camera } = useThree(); // Get the camera from the scene
+  const avatar = useGLTF("./texting.glb");
+// Get the camera from the scene
 
-  // Function to calculate the rotation based on the camera's position
-  const calculateRotation = () => {
-    const targetRotation = Math.atan2(
-      camera.position.x - modelRef.current.position.x,
-      camera.position.z - modelRef.current.position.z
-    );
-    return targetRotation;
-  };
 
-  // Function to rotate the model
-  const rotateModel = () => {
-    const targetRotation = calculateRotation();
-    const newRotation = rotation + 0.01; // Adjust the speed of rotation here
-    setRotation(newRotation);
-    modelRef.current.rotation.y = newRotation;
-  };
-
-  // Call the rotateModel function on each frame
-  useFrame(() => {
-    rotateModel();
-  });
+  const { actions } = useAnimations(avatar.animations, modelRef);
+  useEffect(() => {
+    actions.text.play();
+  }, [actions]);
 
   return (
-    <primitive ref={modelRef} object={avatar.scene} position={[0, -4, -4]} scale={4.0} rotation={[0, rotation, 0]} />
+    <primitive ref={modelRef} object={avatar.scene} position={[0, -4, -4]} scale={4.0} />
   );
 };
 
