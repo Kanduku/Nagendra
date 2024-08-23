@@ -1,59 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import AvatarCanvas from './AvatarCanvas';
 import Tars from '../canvas/Tars';
-
-const ProjectCard = ({ title, images, githubLink, liveLink }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isExpanded, setIsExpanded] = useState(false);
-
-  useEffect(() => {
-    const imageInterval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
-
-    return () => clearInterval(imageInterval);
-  }, [images.length]);
-
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded);
-  };
-
-  return (
-    <div
-      onClick={toggleExpand}
-      style={{
-        ...styles.projectCard,
-        width: isExpanded ? '70%' : 'calc(50% - 20px)', // Adjust width on click
-        transform: isExpanded ? 'scale(1.05)' : 'scale(1)', // Slight scale effect when expanded
-      }}
-    >
-      <div
-        style={{
-          ...styles.imageSection,
-          backgroundImage: `url(${images[currentImageIndex]})`,
-        }}
-      ></div>
-      <div style={styles.contentSection}>
-        <h3 style={styles.projectTitle}>{title}</h3> {/* Title added */}
-        <div style={styles.links}>
-          <a href={githubLink} target="_blank" rel="noopener noreferrer" style={styles.link}>
-            GitHub
-          </a>
-          <a href={liveLink} target="_blank" rel="noopener noreferrer" style={styles.link}>
-            Live
-          </a>
-        </div>
-      </div>
-    </div>
-  );
-};
+import to1 from "./../../images/todo1.jpeg";
+import to2 from "./../../images/todo2.jpeg";
+import to3 from "./../../images/todo3.jpeg";
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [scrollY, setScrollY] = useState(0);
+  const [expandedCardId, setExpandedCardId] = useState(null);
 
   const handleFilterChange = (category) => {
     setSelectedCategory(category);
+  };
+
+  const handleCardClick = (id) => {
+    if (expandedCardId === id) {
+      setExpandedCardId(null); // Collapse if the same card is clicked again
+    } else {
+      setExpandedCardId(id); // Expand the clicked card
+    }
   };
 
   useEffect(() => {
@@ -66,13 +32,14 @@ const Projects = () => {
   }, []);
 
   const projects = [
-    { id: 1, title: 'Project 1', category: 'web', images: ['/path/to/image1.jpg', '/path/to/image2.jpg', '/path/to/image3.jpg'], githubLink: 'https://github.com/your-repo-1', liveLink: 'https://your-live-link-1.com' },
-    { id: 2, title: 'Project 2', category: 'backend', images: ['/path/to/image4.jpg', '/path/to/image5.jpg', '/path/to/image6.jpg'], githubLink: 'https://github.com/your-repo-2', liveLink: 'https://your-live-link-2.com' },
-    { id: 3, title: 'Project 3', category: 'web', images: ['/path/to/image7.jpg', '/path/to/image8.jpg', '/path/to/image9.jpg'], githubLink: 'https://github.com/your-repo-3', liveLink: 'https://your-live-link-3.com' },
-    { id: 4, title: 'Project 4', category: 'web', images: ['/path/to/image1.jpg', '/path/to/image2.jpg', '/path/to/image3.jpg'], githubLink: 'https://github.com/your-repo-1', liveLink: 'https://your-live-link-1.com' },
-    { id: 5, title: 'Project 5', category: 'backend', images: ['/path/to/image4.jpg', '/path/to/image5.jpg', '/path/to/image6.jpg'], githubLink: 'https://github.com/your-repo-2', liveLink: 'https://your-live-link-2.com' },
-    { id: 6, title: 'Project 6', category: 'frontend', images: ['/path/to/image7.jpg', '/path/to/image8.jpg', '/path/to/image9.jpg'], githubLink: 'https://github.com/your-repo-3', liveLink: 'https://your-live-link-3.com' },
-    // Add more projects here
+    { id: 1, title: 'to-do list', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['React', 'Node.js', 'Express'] },
+    { id: 2, title: 'Project 2', category: 'backend', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Django', 'PostgreSQL'] },
+    { id: 3, title: 'Project 1', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Flask', 'MySQL'] },
+    { id: 4, title: 'Project 2', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Vue.js', 'Firebase'] },
+    { id: 5, title: 'to-do', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Angular', 'MongoDB'] },
+    { id: 6, title: 'Project 2', category: 'backend', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Spring Boot', 'OracleDB'] },
+    { id: 7, title: 'Project 1', category: 'frontend', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Svelte', 'GraphQL'] },
+    { id: 8, title: 'Project 2', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Next.js', 'MySQL'] },
   ];
 
   const filteredProjects = selectedCategory === 'all' ? projects : projects.filter(project => project.category === selectedCategory);
@@ -94,9 +61,9 @@ const Projects = () => {
       <div style={styles.projectsSection}>
         <div style={styles.filterBar}>
           <button onClick={() => handleFilterChange('all')} style={styles.filterButton}>All</button>
-          <button onClick={() => handleFilterChange('web')} style={styles.filterButton}>Web</button>
           <button onClick={() => handleFilterChange('backend')} style={styles.filterButton}>Backend</button>
           <button onClick={() => handleFilterChange('frontend')} style={styles.filterButton}>Frontend</button>
+          <button onClick={() => handleFilterChange('fullstack')} style={styles.filterButton}>Fullstack</button>
         </div>
         <div style={styles.projectsContainer}>
           {getProjectRows().map((row, rowIndex) => (
@@ -104,14 +71,84 @@ const Projects = () => {
               {row.map((project) => (
                 <ProjectCard
                   key={project.id}
-                  title={project.title} // Pass the title to ProjectCard
+                  id={project.id}
+                  title={project.title}
                   images={project.images}
                   githubLink={project.githubLink}
                   liveLink={project.liveLink}
+                  tools={project.tools}
+                  isExpanded={expandedCardId === project.id}
+                  onClick={() => handleCardClick(project.id)}
                 />
               ))}
             </div>
           ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ProjectCard = ({ id, title, images, githubLink, liveLink, tools, isExpanded, onClick }) => {
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const imageInterval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+
+    return () => clearInterval(imageInterval);
+  }, [images.length]);
+
+  return (
+    <div
+      onClick={onClick}
+      style={{
+        ...styles.projectCard,
+        width: isExpanded ? '80vw' : 'calc(48% - 20px)',
+        height: isExpanded ? '90vh' : '300px',
+        position: isExpanded ? 'fixed' : 'relative',
+        top: isExpanded ? '50%' : 'auto',
+        left: isExpanded ? '50%' : 'auto',
+        transform: isExpanded ? 'translate(-50%, -50%)' : 'scale(1.05)',
+        zIndex: isExpanded ? 1000 : 1,
+        overflow: 'hidden',
+        margin: isExpanded ? '0' : '20px',
+      }}
+    >
+      <div
+        style={{
+          ...styles.imageSection,
+          backgroundImage: `url(${images[currentImageIndex]})`,
+        }}
+      ></div>
+      <div
+        style={{
+          ...styles.contentSection,
+          background: isExpanded ? 'linear-gradient(45deg, #ff8a00, #e52e71)' : 'transparent',
+          position: isExpanded ? 'absolute' : 'relative',
+          bottom: isExpanded ? 0 : 'auto',
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          padding: '20px',
+        }}
+      >
+        <div style={styles.leftSection}>
+          <h3 style={styles.projectTitle}>{title}</h3>
+          <div style={styles.links}>
+            <a href={githubLink} target="_blank" rel="noopener noreferrer" style={styles.link}>
+              GitHub
+            </a>
+            <a href={liveLink} target="_blank" rel="noopener noreferrer" style={styles.link}>
+              Live
+            </a>
+          </div>
+        </div>
+        <div style={styles.toolsSection}>
+          {tools.join(', ')}
         </div>
       </div>
     </div>
@@ -132,15 +169,14 @@ const styles = {
     display: 'flex',
     justifyContent: 'center',
     width: '100%',
-     // Dark background for filter bar
   },
   filterButton: {
     margin: '0 10px',
     padding: '10px 20px',
     border: 'none',
     borderRadius: '5px',
-    backgroundColor: '#333', // Dark button background
-    color: '#fff', // Light button text
+    backgroundColor: '#333',
+    color: '#fff',
     cursor: 'pointer',
     transition: 'background-color 0.3s',
   },
@@ -152,15 +188,13 @@ const styles = {
     top: 0,
     zIndex: 0,
     overflow: 'hidden',
-    backgroundColor: '#0a0a0a', // Darker background for AvatarCanvas
   },
   projectsSection: {
     width: '70%',
     height: '100%',
     marginLeft: '30%',
     overflowY: 'scroll',
-    padding: '60px 20px 20px', // Space for filter bar and padding
-    backgroundColor: '#121212', // Dark background for projects section
+    padding: '60px 20px 20px',
   },
   projectsContainer: {
     display: 'flex',
@@ -174,46 +208,66 @@ const styles = {
     gap: '20px',
   },
   projectCard: {
-    height: '300px',
+    height: '200px',
     display: 'flex',
     flexDirection: 'column',
     borderRadius: '25px',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
     overflow: 'hidden',
-    backgroundColor: '#222', // Dark card background
-    transition: 'transform 0.3s ease, width 0.3s ease',
-    cursor: 'pointer', // Indicate clickable area
+    transition: 'transform 0.3s ease, width 0.3s ease, height 0.3s ease',
+    cursor: 'pointer',
   },
   imageSection: {
-    height: '200px',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     transition: 'background-image 1s ease',
   },
   contentSection: {
     padding: '10px',
-    background: 'linear-gradient(45deg, #ff8a00, #e52e71)',
     display: 'flex',
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    width: '100%',
+  },
+  leftSection: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
   projectTitle: {
     margin: 0,
-    color: '#fff',
+    color: 'black',
     fontWeight: 'bold',
+    backgroundColor: 'white',
+    borderRadius: '50px',
+    padding: '5px 10px',
+    margin: '0 130px',
   },
   links: {
     display: 'flex',
+    margin: '0 80px',
   },
   link: {
     color: '#fff',
     fontWeight: 'bold',
     textDecoration: 'none',
-    marginRight: '10px',
+    margin: '0 20px',
     padding: '5px 10px',
     borderRadius: '50px',
-    backgroundColor: 'rgba(0, 0, 0, 0.3)',
     transition: 'background-color 0.3s ease',
+  },
+  toolsSection: {
+    margin: '0 50px',
+    textAlign: 'right',
+    color: '#fff',
+    fontStyle: 'italic',
   },
 };
 
