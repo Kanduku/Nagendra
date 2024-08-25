@@ -4,11 +4,13 @@ import Tars from '../canvas/Tars';
 import to1 from "./../../images/todo1.jpeg";
 import to2 from "./../../images/todo2.jpeg";
 import to3 from "./../../images/todo3.jpeg";
+import { transform } from 'framer-motion';
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [scrollY, setScrollY] = useState(0);
   const [expandedCardId, setExpandedCardId] = useState(null);
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(window.innerWidth <= 960);
 
   const handleFilterChange = (category) => {
     setSelectedCategory(category);
@@ -27,8 +29,17 @@ const Projects = () => {
       setScrollY(window.scrollY);
     };
 
+    const handleResize = () => {
+      setIsMobileOrTablet(window.innerWidth <= 960);
+    };
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   const projects = [
@@ -46,19 +57,19 @@ const Projects = () => {
 
   const getProjectRows = () => {
     const rows = [];
-    for (let i = 0; i < filteredProjects.length; i += 2) {
-      rows.push(filteredProjects.slice(i, i + 2));
+    for (let i = 0; i < filteredProjects.length; i += isMobileOrTablet ? 1 : 2) {
+      rows.push(filteredProjects.slice(i, i + (isMobileOrTablet ? 1 : 2)));
     }
     return rows;
   };
 
   return (
-    <div style={styles.container}>
+    <div style={isMobileOrTablet ? styles.containerMobile : styles.container}>
       <Tars />
-      <div style={styles.avatarContainer}>
+      <div style={isMobileOrTablet ? styles.avatarContainerHidden : styles.avatarContainer}>
         <AvatarCanvas scrollY={scrollY} />
       </div>
-      <div style={styles.projectsSection}>
+      <div style={isMobileOrTablet ? styles.projectsSectionMobile : styles.projectsSection}>
         <div style={styles.filterBar}>
           <button onClick={() => handleFilterChange('all')} style={styles.filterButton}>All</button>
           <button onClick={() => handleFilterChange('backend')} style={styles.filterButton}>Backend</button>
@@ -91,11 +102,12 @@ const Projects = () => {
 
 const ProjectCard = ({ id, title, images, githubLink, liveLink, tools, isExpanded, onClick }) => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 600);
+  
   React.useEffect(() => {
     const imageInterval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(imageInterval);
   }, [images.length]);
@@ -105,16 +117,16 @@ const ProjectCard = ({ id, title, images, githubLink, liveLink, tools, isExpande
       onClick={onClick}
       style={{
         ...styles.projectCard,
-        width: isExpanded ? '80vw' : 'calc(48% - 20px)',
+        width: isExpanded ? '80vw' : isMobile ? '90%' : 'calc(48% - 20px)',
         height: isExpanded ? '90vh' : '300px',
         position: isExpanded ? 'fixed' : 'relative',
         top: isExpanded ? '50%' : 'auto',
         left: isExpanded ? '50%' : 'auto',
-        transform: isExpanded ? 'translate(-50%, -50%)' : 'scale(1.05)',
+        transform: isExpanded ? 'translate(-50%, -50%)' : 'scaleX(1.05)',
         zIndex: isExpanded ? 1000 : 1,
         overflow: 'hidden',
-        margin: isExpanded ? '0' : '20px',
-      }}
+        margin: isExpanded ? '0' : isMobile ? '0 auto 10px' : '10px',
+     }}
     >
       <div
         style={{
@@ -155,30 +167,27 @@ const ProjectCard = ({ id, title, images, githubLink, liveLink, tools, isExpande
   );
 };
 
+
 const styles = {
   container: {
     display: 'flex',
     height: '100vh',
     overflow: 'hidden',
+    '@media (max-width: 600px)': { // Mobile
+      flexDirection: 'column',
+      width: '100vw',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      flexDirection: 'column',
+      width: '100vw',
+    },
   },
-  filterBar: {
-    position: 'sticky',
-    top: 0,
-    zIndex: 1000,
-    padding: '10px 20px',
+  containerMobile: {
     display: 'flex',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  filterButton: {
-    margin: '0 10px',
-    padding: '10px 20px',
-    border: 'none',
-    borderRadius: '5px',
-    backgroundColor: '#333',
-    color: '#fff',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s',
+    flexDirection: 'column',
+    height: '100vh',
+    overflow: 'hidden',
+    width: '100vw',
   },
   avatarContainer: {
     width: '40%',
@@ -188,35 +197,111 @@ const styles = {
     top: 0,
     zIndex: 0,
     overflow: 'hidden',
+    '@media (max-width: 960px)': { // Tablet and below
+      display: 'none',
+      width: '0%',
+    },
+  },
+  avatarContainerHidden: {
+    display: 'none',
   },
   projectsSection: {
     width: '70%',
     height: '100%',
-    marginLeft: '30%',
     overflowY: 'scroll',
-    padding: '60px 20px 20px',
+    marginLeft: '30%',
+    zIndex: 1,
+    '@media (max-width: 600px)': { // Mobile
+      width: '100vw',
+      marginLeft: '0',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      width: '100vw',
+      marginLeft: '0',
+    },
+  },
+  projectsSectionMobile: {
+    width: '100vw',
+        height: '100%',
+    overflowY: 'scroll',
+    zIndex: 1,
+   
+  },
+  filterBar: {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    marginBottom: '20px',
+    '@media (max-width: 600px)': { // Mobile
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      justifyContent: 'space-between',
+    },
+  },
+  filterButton: {
+    padding: '10px 20px',
+    border: 'none',
+    backgroundColor: '#333',
+    color: '#fff',
+    borderRadius: '40px',
+    cursor: 'pointer',
+    '@media (max-width: 600px)': { // Mobile
+      marginBottom: '10px',
+     
+    },
   },
   projectsContainer: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    borderRadius: '15px',
+    alignItems: 'center',
+    padding: '0 20px',
+    justifyContent: 'center',
+    '@media (max-width: 600px)': { // Mobile
+      padding: '0 10px',
+      width: '100vw',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      padding: '0 15px',
+      width: '100vw',
+    },
   },
   projectRow: {
     display: 'flex',
     justifyContent: 'space-between',
-    gap: '20px',
+    width: '100%',
+    marginBottom: '20px',
+    '@media (max-width: 600px)': { // Mobile
+      flexDirection: 'column',
+      width: '100vw',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      flexDirection: 'column',
+      width: '100vw',
+    },
   },
+  
   projectCard: {
-    height: '200px',
-    display: 'flex',
-    flexDirection: 'column',
-    borderRadius: '25px',
-    boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+    borderRadius: '10px',
     overflow: 'hidden',
-    transition: 'transform 0.3s ease, width 0.3s ease, height 0.3s ease',
     cursor: 'pointer',
+    transition: 'transform 0.3s ease, width 0.3s ease, height 0.3s ease',
+    '@media (max-width: 600px)': { // Mobile
+      width: '90%', // Occupy 90% of the screen width
+      margin: '0 auto 10px', // Center the card and add bottom margin
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      width: '100vw',
+      marginLeft: '-10px', // Adjust the margin to offset any container padding
+      marginRight: '-10px', // Adjust the margin to offset any container padding
+    },
+    '@media (min-width: 961px)': { // Desktop and above
+      width: 'calc(48% - 20px)',
+    },
   },
+  
+  
+  
   imageSection: {
     position: 'absolute',
     top: 0,
@@ -227,48 +312,66 @@ const styles = {
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     transition: 'background-image 1s ease',
+    '@media (max-width: 600px)': { // Mobile
+      height: '150px',
+     
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      height: '200px',
+      
+    },
   },
   contentSection: {
-    padding: '10px',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-  },
-  leftSection: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
+    padding: '20px',
+    background: 'rgba(0,0,0,0.7)',
+    color: '#fff',
+    '@media (max-width: 600px)': { // Mobile
+      padding: '10px',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      padding: '15px',
+    },
   },
   projectTitle: {
     margin: 0,
-    color: 'black',
-    fontWeight: 'bold',
-    backgroundColor: 'white',
+    fontSize: '1.1em',
+    backgroundColor: 'black',
     borderRadius: '50px',
-    padding: '5px 10px',
-    margin: '0 130px',
+    padding: '0 10px',
+    '@media (max-width: 600px)': { // Mobile
+      fontSize: '0.2em',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      fontSize: '0.3em',
+    },
   },
   links: {
-    display: 'flex',
-    margin: '0 80px',
+    marginTop: '10px',
+    '@media (max-width: 600px)': { // Mobile
+      marginTop: '5px',
+    },
   },
   link: {
     color: '#fff',
-    fontWeight: 'bold',
     textDecoration: 'none',
-    margin: '0 20px',
-    padding: '5px 10px',
-    borderRadius: '50px',
-    transition: 'background-color 0.3s ease',
+    marginRight: '10px',
+    '@media (max-width: 600px)': { // Mobile
+      marginRight: '5px',
+    },
   },
   toolsSection: {
-    margin: '0 50px',
-    textAlign: 'right',
-    color: '#fff',
-    fontStyle: 'italic',
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: '0.9em',
+    color: '#ccc',
+    '@media (max-width: 600px)': { // Mobile
+      fontSize: '0.2em',
+    },
+    '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
+      fontSize: '0.25em',
+    },
   },
 };
+
 
 export default Projects;
