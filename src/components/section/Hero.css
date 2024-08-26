@@ -19,68 +19,14 @@
   }
 }
 
-.hero-inner-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  max-width: 1100px;
-}
-
-@media (max-width: 960px) {
-  .hero-inner-container {
-    flex-direction: column;
-  }
-}
-
-.hero-left-container {
-  width: 100%;
-  order: 1;
-  gap: 6px;
-  justify-content: start;
-}
-
-@media (max-width: 960px) {
-  .hero-left-container {
-    order: 2;
-    margin-bottom: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.hero-right-container {
-  width: 100%;
-  order: 2;
-  display: flex;
-  align-items: end;
-}
-
-@media (max-width: 960px) {
-  .hero-right-container {
-    flex-direction: column;
-    order: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-right-container {
-    margin-bottom: 30px;
-  }
-}
 
 .title {
   font-weight: 700;
   font-size: 50px;
   margin-bottom: 18px;
   color: var(--text-primary);
-  line-height: 68px;
+  line-height: 58px;
+  white-space: nowrap;
 }
 
 @media (max-width: 960px) {
@@ -214,12 +160,13 @@ body, html {
     order: 0; /* Ensure box1 is at the top */
     width: 100%; /* Full width for mobile */
     height: 50%; 
-    padding-top:60px;/* Adjust height if needed */
+    padding-top:60px;
+   /* Adjust height if needed */
   }
 
   .box2 {
-   padding-top: 390px;
-   padding-bottom: -90px;
+   padding-top: 180px;
+   padding-bottom: -120px;
     order: 1; /* Ensure box2 is below box1 */
     width: 100%; /* Full width for mobile */
     height: 50%; /* Adjust height if needed */
@@ -227,9 +174,10 @@ body, html {
 }
 
 /* Desktop view */
-@media (min-width: 768px) {
+@media (min-width: 968px) {
   .container {
-    flex-direction: row; /* Change direction to row */
+    flex-direction: row; 
+    /* Change direction to row */
   }
 
   .box1 {
@@ -237,6 +185,8 @@ body, html {
     flex: 0 0 35%; /* Keep the same proportion */
     height: 100%;
     padding-right: 190px;
+   
+   
    /* Full height */
   }
 
@@ -244,6 +194,12 @@ body, html {
     order: 0; /* Ensure box2 is above box1 */
     flex: 0 0 65%; /* Keep the same proportion */
     height: 100%; 
+    margin: -50px 0;
     /* Full height */
   }
+  .sub-title{
+     /* Limit to 5 lines */
+min-width: 700px;
+  }
 }
+

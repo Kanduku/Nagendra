@@ -36,8 +36,7 @@ const Lhio = () => {
     <div className="hero-container">
       <Tars />
       <motion.div {...headContainerAnimation}>
-        <div className="hero-inner-container">
-          <div className="hero-left-container">
+       
             <motion.div {...headTextAnimation}>
               <div className="title">
                 Hi I'm <br /> {Bio.name}
@@ -55,9 +54,7 @@ const Lhio = () => {
             <motion.div {...headContentAnimation}>
               <div className="sub-title">{Bio.description}</div>
             </motion.div>
-           
-          </div>
-        </div>
+         
       </motion.div>
      
     </div>
