@@ -26,11 +26,7 @@ export const Bio = {
           image:
             "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACTklEQVR4Ab1XAaQqURB9DyohSykREpRIQSAlBCoECKUFCSRCBBEAaSEABQEoCIEASCwAUICALgCo83do0//9v819XX845O7VnDkzOzP7JWGaBd3C3IJpQVjAHeJ+Rs9a97vKLGrBsB1KgMhEP3FMUUwt4ENMfxr1yQIU4SSjRkbeOZtERmHk6pXQVDlnkHh9S+QLTm1hkiz4n/gzFQuny9FoFLquE+i34x+n02k0m00UCoV3BIzn3MMJrVYLtp1OJ0cS/X4f5/MZhmG8IyDsWtDfEaDIn2232/3zbrvdxuFwwGg04qRBt+VnETBNE0IIkE2n07/erdfrWK/X6Ha73Hb9ZXII3G43ivy3dNRqtZe7lUoFs9mM6oBDwCQCgquALT1FT3a5XF7qIZ/PYzgcolqtcggIIgBZAgRKB6lCRalp2uM8k8mAVMrlchwC+DEBipycE4n5fP44j8ViKJVKSCaTbAJCpgaez4vFIsjoWa/XA50FAgEkEgmEw2F2CkxZBZ5Br5tt1ITcbjd8Ph88Hg+7CBefECCsVitS4aVJcV9D/VMCVITk/Hq9YrPZyBBo2a1YMGvAcQYcj0cCtWMugcdYNhjDiBrP25mx3++x3W6RzWZZ8isfxzQLlsslJpMJpYY5jhkqcOH1ejEYDDAej9FoNOByuZxGsfqVzC7KTqcDSkkqleKsZOqX0mAwiHK5DGrJfr+fs5SqX8sjkQji8ThCoRC+v78Za7l6JagrUh3YkUuZpqgwDaecc9VYSDoV5Fg+at7n+eLN57kuE/EvzHr/Kvs31aYAAAAASUVORK5CYII=",
         },
-        {
-          name: "Angular Js",
-          image:
-            "https://camo.githubusercontent.com/8886130b3d8aba95dbdd7c4f9a41029606424cc06d1873c1ced87dd55a222fef/68747470733a2f2f616e67756c61722e696f2f6173736574732f696d616765732f6c6f676f732f616e67756c61722f616e67756c61722e737667",
-        },
+        
         {
           name: "HTML",
           image: "https://www.w3.org/html/logo/badge/html5-badge-h-solo.png",
@@ -40,14 +36,10 @@ export const Bio = {
           image:
             "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/CSS3_logo_and_wordmark.svg/1452px-CSS3_logo_and_wordmark.svg.png",
         },
-        {
-          name: "JavaScript",
-          image:
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
-        },
+       
         {
           name: "React three fiber",
-          image:"https://th.bing.com/th?id=OIP.a4Mx-dwdtvIOPSCvKfx7UgHaEi&w=319&h=195&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2",
+          image:"https://global.discourse-cdn.com/standard17/uploads/threejs/original/2X/e/e4f86d2200d2d35c30f7b1494e96b9595ebc2751.png",
 
         },
         {
@@ -55,9 +47,7 @@ export const Bio = {
           image:"https://th.bing.com/th/id/OIP.99YCwxgloR7q_iL-2XW4lgHaGc?w=169&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
 
         },
-        {
-          name: "loading...",
-            },
+        
      
     
       ],
@@ -88,15 +78,30 @@ export const Bio = {
           image:
             "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
         },
-        {
-          name: "loading...",
-            },
-   
+        
       ],
     },
  
     {
       title: "Android",
+      skills: [
+      
+         {
+          name: "flutter",
+          image:
+            "https://www.codemobiles.com/biz/images/course_shortcut_flutter.png",
+        },
+        {
+          name: "react native",
+          image:
+            "https://th.bing.com/th/id/OIP.NDmK7ahBHEtpr2QSGk1HKQHaIl?w=140&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7",
+        },
+        
+       
+      ],
+    },
+    {
+      title: "Languages",
       skills: [
         {
           name: "Java",
@@ -104,8 +109,21 @@ export const Bio = {
             "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
         },
         {
-          name: "loading...",
-            },
+          name: "JavaScript",
+          image:
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+        },
+         {
+          name: "python",
+          image:
+            "https://th.bing.com/th/id/OIP.dJToM1TiZiJA0GYwzDHwjQHaHY?rs=1&pid=ImgDetMain",
+        },
+        {
+          name: "C++",
+          image:
+            "https://th.bing.com/th/id/OIP.7VHmha8-YDLarbS6Rz1XtgAAAA?w=420&h=420&rs=1&pid=ImgDetMain",
+        },
+        
        
       ],
     },
@@ -136,9 +154,7 @@ export const Bio = {
 
 
      
-        {
-          name: "loading...",
-            },
+       
       ],
     },
   ];

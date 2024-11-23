@@ -4,7 +4,13 @@ import Tars from '../canvas/Tars';
 import to1 from "./../../images/todo1.jpeg";
 import to2 from "./../../images/todo2.jpeg";
 import to3 from "./../../images/todo3.jpeg";
-import { transform } from 'framer-motion';
+import calender from "./../../images/calender.png";
+import blog from "./../../images/blog.png";
+import form from "./../../images/form.png";
+import moneytracker from "./../../images/money-tracker.png";
+
+
+
 
 const Projects = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -43,15 +49,12 @@ const Projects = () => {
   }, []);
 
   const projects = [
-    { id: 1, title: 'to-do list', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['React', 'Node.js', 'Express'] },
-    { id: 2, title: 'Project 2', category: 'backend', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Django', 'PostgreSQL'] },
-    { id: 3, title: 'Project 1', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Flask', 'MySQL'] },
-    { id: 4, title: 'Project 2', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Vue.js', 'Firebase'] },
-    { id: 5, title: 'to-do', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Angular', 'MongoDB'] },
-    { id: 6, title: 'Project 2', category: 'backend', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Spring Boot', 'OracleDB'] },
-    { id: 7, title: 'Project 1', category: 'frontend', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Svelte', 'GraphQL'] },
-    { id: 8, title: 'Project 2', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['Next.js', 'MySQL'] },
-  ];
+    { id: 1, title: 'To-do list', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['React', 'Node.js', 'Express'] },
+    { id: 2, title: 'Calander', category: 'frontend', images: [calender], githubLink: 'https://github.com/Kanduku/calander', liveLink: 'https://calander-two.vercel.app/', tools: ['HTML','CSS', 'Javascript'] },
+    { id: 3, title: 'Blog', category: 'fullstack', images: [blog], githubLink: 'https://github.com/Kanduku/blog/tree/main', liveLink: 'https://blog-zeta-six-65.vercel.app/', tools: ['Next.js'] },
+    { id: 4, title: 'Money tracker', category: 'backend', images: [moneytracker], githubLink: 'https://github.com/Kanduku/money-tracker', liveLink: 'https://money-tracker-blue-two.vercel.app/', tools: ['HTML','CSS', 'Javascript'] },
+    { id: 5, title: 'Form', category: 'fullstack', images: [form], githubLink: 'https://github.com/Kanduku/registration/', liveLink: 'https://registration-henna-zeta.vercel.app/', tools: ['HTML','CSS', 'Javascript', 'MongoDB'] },
+      ];
 
   const filteredProjects = selectedCategory === 'all' ? projects : projects.filter(project => project.category === selectedCategory);
 
@@ -102,7 +105,7 @@ const Projects = () => {
 
 const ProjectCard = ({ id, title, images, githubLink, liveLink, tools, isExpanded, onClick }) => {
   const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 600);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 900);
   
   React.useEffect(() => {
     const imageInterval = setInterval(() => {
@@ -117,15 +120,16 @@ const ProjectCard = ({ id, title, images, githubLink, liveLink, tools, isExpande
       onClick={onClick}
       style={{
         ...styles.projectCard,
-        width: isExpanded ? '80vw' : isMobile ? '90%' : 'calc(48% - 20px)',
-        height: isExpanded ? '90vh' : '300px',
+        width: isExpanded ? '80%' : isMobile ? 'calc(88% - 20px)' : 'calc(98% - 20px)',
+        height: isMobile ? '40vh' : isExpanded ? '80vh' : '300px',
         position: isExpanded ? 'fixed' : 'relative',
         top: isExpanded ? '50%' : 'auto',
         left: isExpanded ? '50%' : 'auto',
         transform: isExpanded ? 'translate(-50%, -50%)' : 'scaleX(1.05)',
         zIndex: isExpanded ? 1000 : 1,
         overflow: 'hidden',
-        margin: isExpanded ? '0' : isMobile ? '0 auto 10px' : '10px',
+        margin: isExpanded ? '0' : isMobile ? '0 auto 10px' : '20px 20px',
+        
      }}
     >
       <div
@@ -318,6 +322,7 @@ const styles = {
     },
     '@media (min-width: 601px) and (max-width: 960px)': { // Tablet
       height: '200px',
+     
       
     },
   },
