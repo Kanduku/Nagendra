@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './Education.css';  // Import the CSS file
-import Boy from '../canvas/Boy';
+
 import Tars from '../canvas/Tars';
 import mainLogo from "./../../images/6728572_1718269862_page-0001.jpg";
 import mainLogo1 from "./../../images/css certificate_page-0001.jpg";
 import mainLogo2 from "./../../images/edx_page-0001.jpg";
 import mainLogo3 from "./../../images/javascript_basic certificate_page-0001.jpg";
+import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const Education = () => {
   const [expanded, setExpanded] = useState(null);
@@ -19,7 +20,11 @@ const Education = () => {
       <Tars />
 
       <div className="profile-section">
-        <Boy />
+      <DotLottieReact
+      src="https://lottie.host/86b450b7-e845-4f6b-a20b-da146ec08c24/LAv5UrQ7rB.lottie"
+      loop
+      autoplay
+    />
         <h1 className="dob">KANDUKURU NAGENDRA KUMAR</h1>
         <p className="dob">Date of Birth: NOVEMBER 1, 2003</p>
 
