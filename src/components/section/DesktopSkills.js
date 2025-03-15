@@ -20,8 +20,7 @@ const Container = styled.div`
 
 // Title at the center
 const CenterTitle = styled.div`
-  font-size: 52px;
-  font-weight: 600;
+scale:1.5;
   color: ${({ theme }) => theme.text_primary};
   text-align: center;
   position: absolute;
@@ -35,17 +34,17 @@ const CenterTitle = styled.div`
 // Define the circular path animation
 const moveInCircle = keyframes`
 
-  0%   { transform: rotate(0deg) translateX(200px) translateY(100px) rotate(0deg);  opacity: 1;}
-  10%  { transform: rotate(36deg) translateX(120px) translateY(120px) rotate(-36deg); opacity: 1;}
+  0%   { transform: rotate(0deg) translateX(220px) translateY(100px) rotate(0deg);  opacity: 1;}
+  10%  { transform: rotate(36deg) translateX(150px) translateY(120px) rotate(-36deg); opacity: 1;}
   20%  { transform: rotate(72deg) translateX(120px) translateY(140px) rotate(-72deg); opacity: 1;}
   30%  { transform: rotate(108deg) translateX(250px) translateY(160px) rotate(-108deg); opacity: 1; }
   40%  { transform: rotate(144deg) translateX(350px) translateY(180px) rotate(-144deg); opacity: 1;}
   50%  { transform: rotate(180deg) translateX(300px) translateY(200px) rotate(-180deg); opacity: 1;}
   60%  { transform: rotate(216deg) translateX(300px) translateY(180px) rotate(-216deg); opacity: 1;}
-  70%  { transform: rotate(252deg) translateX(220px) translateY(160px) rotate(-252deg); opacity: 1;}
-  80%  { transform: rotate(288deg) translateX(220px) translateY(140px) rotate(-288deg); opacity: 1;}
-  90%  { transform: rotate(324deg) translateX(280px) translateY(120px) rotate(-324deg); opacity: 1;}
-  100% { transform: rotate(360deg) translateX(300px) translateY(100px) rotate(-360deg); opacity: 1;}
+  70%  { transform: rotate(252deg) translateX(250px) translateY(160px) rotate(-252deg); opacity: 1;}
+  80%  { transform: rotate(288deg) translateX(250px) translateY(140px) rotate(-288deg); opacity: 1;}
+  90%  { transform: rotate(324deg) translateX(250px) translateY(120px) rotate(-324deg); opacity: 1;}
+  100% { transform: rotate(360deg) translateX(220px) translateY(100px) rotate(-360deg); opacity: 1;}
 `;
 
 const SkillCardWrapper = styled.div`
