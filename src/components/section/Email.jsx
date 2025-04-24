@@ -113,53 +113,44 @@ const ContactButton = styled.input`
 
 
 const Email = () => {
+  const form = useRef(); // create form reference
 
-  const form = useRef();
   const handelSubmit = (e) => {
     e.preventDefault();
     emailjs
       .sendForm(
-        "service_m67kbsb",
+        "service_5px6b49",
         "template_6242qwx",
-       e.target,
-        "KWaVq7Ncrnm5jEcGL",
+        form.current, // use form.current instead of e.target
+        "KWaVq7Ncrnm5jEcGL"
       )
       .then(
         (result) => {
-          alert("Message Sent");
-         
+          alert("Message Sent ✅");
         },
         (error) => {
-          alert(error);
+          alert("Failed to send ❌: " + error.text);
         }
       );
   };
 
-  
-
-  return ( 
-          
-    <Container >
+  return (
+    <Container>
       <Wrapper>
         <Title>Contact</Title>
-        <Desc
-          style={{
-            marginBottom: "40px",
-          }}
-        >
+        <Desc style={{ marginBottom: "40px" }}>
           Feel free to reach out to me for any questions or opportunities!
         </Desc>
-        <ContactForm onSubmit={handelSubmit}>
+        <ContactForm ref={form} onSubmit={handelSubmit}>
           <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" name="message" rows={4} />
+          <ContactInput placeholder="Your Email" name="from_email" required />
+          <ContactInput placeholder="Your Name" name="from_name" required />
+          <ContactInput placeholder="Subject" name="subject" required />
+          <ContactInputMessage placeholder="Message" name="message" rows={4} required />
           <ContactButton type="submit" value="Send" />
         </ContactForm>
       </Wrapper>
     </Container>
-    
   );
 };
 
