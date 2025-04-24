@@ -10,7 +10,7 @@ import form from "./../../images/form.png";
 import res from "./../../images/restaurant.png";
 import log from "./../../images/login.png";
 import moneytracker from "./../../images/money-tracker.png";
-import loan from "./../../images/loan.png";
+import loan from "./../../images/loan3.png";
 import loan1 from "./../../images/loan1.png";
 import loan2 from "./../../images/loan2.png";
 
