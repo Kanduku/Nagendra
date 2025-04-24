@@ -51,6 +51,8 @@ const Projects = () => {
   }, []);
 
   const projects = [
+    { id: 7, title: 'Form', category: 'fullstack', images: [form], githubLink: 'https://github.com/Kanduku/loan2', liveLink: 'https://loan2-umber.vercel.app/', tools: ['React.js','Django', 'Python'] },
+
     { id: 6, title: 'go-food', category: 'fullstack', images: [res, log], githubLink: 'https://github.com/Kanduku/gofood/', liveLink: 'https://gofood-ten-cyan.vercel.app/', tools: ['React.js','Express.js', 'MongoDB'] },
     { id: 1, title: 'To-do list', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['React', 'Node.js', 'Express'] },
     { id: 2, title: 'Calander', category: 'frontend', images: [calender], githubLink: 'https://github.com/Kanduku/calander', liveLink: 'https://calander-two.vercel.app/', tools: ['HTML','CSS', 'Javascript'] },
