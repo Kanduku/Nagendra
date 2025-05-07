@@ -13,7 +13,9 @@ import moneytracker from "./../../images/money-tracker.png";
 import loan from "./../../images/loan3.png";
 import loan1 from "./../../images/loan1.png";
 import loan2 from "./../../images/loan2.png";
-
+import mg1 from "./../../images/mg1.png"
+import mg2 from "./../../images/mg2.png"
+import mg3 from "./../../images/mg3.png"
 
 
 const Projects = () => {
@@ -53,7 +55,10 @@ const Projects = () => {
   }, []);
 
   const projects = [
+    
     { id: 7, title: 'loan approval predictor', category: 'fullstack', images: [loan ,loan1, loan2], githubLink: 'https://github.com/Kanduku/loan-approval', liveLink: 'https://loan-approval-theta.vercel.app/', tools: ['React.js','Django', 'Python'] },
+
+    { id: 8, title: 'Task manger', category: 'fullstack', images: [mg3 ,mg2 , mg1 ], githubLink: 'https://github.com/Kanduku/Task', liveLink: 'https://github.com/Kanduku/Task/', tools: ['React.js','Express.js', 'Three.js'] },
 
     { id: 6, title: 'go-food', category: 'fullstack', images: [res, log], githubLink: 'https://github.com/Kanduku/gofood/', liveLink: 'https://gofood-ten-cyan.vercel.app/', tools: ['React.js','Express.js', 'MongoDB'] },
     { id: 1, title: 'To-do list', category: 'fullstack', images: [to1, to2, to3], githubLink: 'https://github.com/Kanduku/to-do-list', liveLink: 'https://to-do-list-34xx.vercel.app/', tools: ['React', 'Node.js', 'Express'] },
